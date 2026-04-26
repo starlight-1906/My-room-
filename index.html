@@ -1,0 +1,447 @@
+ <!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>My Simple Site</title>
+	<style>
+		:root{--bg:#041a4a;--card:#0a2a6b;--text:#e9edff;--muted:#b8c0ff;--accent:#4da3ff}
+		*{box-sizing:border-box}
+		body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:radial-gradient(1200px 800px at 20% 0%, #0e4aa8 0%, var(--bg) 45%, #020816 100%);color:var(--text)}
+		a{color:var(--muted)}
+		header{position:sticky;top:0;background:rgba(11,16,32,.8);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
+		.nav{max-width:980px;margin:0 auto;display:flex;gap:10px;align-items:center;justify-content:space-between;padding:12px 16px}
+		.nav a{padding:8px 10px;border-radius:10px;text-decoration:none;color:var(--text)}
+		.nav a:hover{background:rgba(255,255,255,.06)}
+		.brand{font-weight:700;letter-spacing:.2px}
+		main{max-width:980px;margin:0 auto;padding:18px 16px 64px}
+		section{margin:18px 0;padding:18px;border:1px solid rgba(255,255,255,.08);border-radius:16px;background:rgba(18,26,51,.75)}
+		h2{margin:0 0 10px}
+		.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+		.card{padding:14px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06)}
+		input,textarea,button{width:100%;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.25);color:var(--text)}
+		button{cursor:pointer;background:var(--accent);border:none;font-weight:650}
+		button:hover{filter:brightness(1.05)}
+		.small{font-size:.92rem;color:var(--muted)}
+		.badge{display:inline-block;padding:4px 10px;border-radius:999px;background:rgba(124,92,255,.16);border:1px solid rgba(124,92,255,.35);color:var(--text)}
+		footer{max-width:980px;margin:0 auto;padding:0 16px 26px;color:var(--muted)}
+		iframe{width:100%;border:0;border-radius:14px}
+	</style>
+</head>
+<body>
+	<header>
+		<div class="nav">
+			<div class="brand">My Simple Site <span class="badge">one page</span></div>
+			<nav style="display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end">
+				<a href="#home">Home</a>
+				<a href="#permission-slips">Digital Permission Slips</a>
+				<a href="#secret">Secret Message</a>
+				<a href="#playlist">Playlist</a>
+				<a href="#guestbook">Guestbook</a>
+				<a href="#guest-of-the-day">Guest of the Day</a>
+				<a href="#room-status">Room Status</a>
+				<a href="#todays-vibe">Today’s Vibe</a>
+				<a href="#sticker-wall">Sticker Wall</a>
+				<a href="#blue-pass">Blue Pass Holders</a>
+				<a href="#room-map">Room Map</a>
+				<a href="#rules">Rules</a>
+				<a href="#vip">VIP Code Generator</a>
+			</nav>
+		</div>
+	</header>
+
+	<main>
+		<section id="home">
+			<h2>Home</h2>
+			<h2>Home</h2>
+
+	<div class="card" style="margin:12px 0">
+		<h3 style="margin:0 0 6px">Welcome</h3>
+		<p class="small" style="margin:0">
+			Welcome to <strong>My Simple Site</strong>. Use the menu to find permission slips, a hidden message, the playlist, and VIP codes.
+		</p>
+	</div>
+
+	<div class="grid">
+		<div class="card">
+			<strong>Today’s plan</strong>
+			<ul class="small" style="margin:10px 0 0; padding-left:18px">
+				<li>Fill out the digital permission slip (if needed)</li>
+				<li>Add a message to the guestbook</li>
+				<li>Grab a VIP code if you’re on the list</li>
+			</ul>
+		</div>
+
+		<div class="card">
+			<strong>Quick info</strong>
+			<p class="small" style="margin:10px 0 0">
+				<span class="badge">Date</span> 26 Apr 2026<br/>
+			</p>
+		</div>
+
+		<div class="card">
+			<strong>Call to action</strong>
+			<p class="small" style="margin:10px 0 12px">
+				Start here if you’re arriving with someone who needs permission.
+			</p>
+			<button onclick="location.href='#permission-slips'">Go to Permission Slips</button>
+		</div>
+
+		<div class="card">
+			<strong>Contact</strong>
+			
+			</div>
+	</div>
+</section>		<section id="permission-slips">
+			<h2>Digital Permission Slips</h2>
+			<p class="small">Use this for collecting consent/permission digitally.</p>
+			<div class="grid">
+				<div class="card">
+					<label>Participant name</label>
+					<input id="ps_name" placeholder="Full name" />
+					<br/><br/>
+					<label>Guardian email</label>
+					<input id="ps_email" type="email" placeholder="name@example.com" />
+					<br/><br/>
+					<label>Notes</label>
+					<textarea id="ps_notes" rows="4" placeholder="Allergies, pickup info, etc."></textarea>
+					<br/><br/>
+					<button onclick="downloadPermissionSlip()">Download slip (PDF-free)</button>
+					<p class="small">This creates a simple text file download you can store/print. For official workflows, swap this s
+		<section id="secret">
+			<h2>Secret Message</h2>
+			<p class="small">Put a password here to reveal a message.</p>
+			<div class="grid">
+				<div class="card">
+					<label>Enter password</label>
+					<input id="secret_pw" placeholder="Password" />
+					<br/><br/>
+					<button onclick="revealSecret()">Reveal</button>
+					<p id="secret_out" style="margin:12px 0 0" class="small"></p>
+				</div>
+				<div class="card">
+					<strong>Edit me</strong>
+					<p class="small">Change <code>SECRET_PASSWORD</code> and <code>SECRET_MESSAGE</code> in the script.</p>
+				</div>
+			</div>
+
+		</section>
+
+		<section id="permission-slips">
+			<h2>Digital Permission Slips</h2>
+			<p class="small">Use this for collecting consent/permission digitally.</p>
+			<div class="grid">
+				<div class="card">
+					<label>Participant name</label>
+					<input id="ps_name" placeholder="Full name" />
+					<br/><br/>
+					<label>Guardian email</label>
+					<input id="ps_email" type="email" placeholder="name@example.com" />
+					<br/><br/>
+					<label>Notes</label>
+					<textarea id="ps_notes" rows="4" placeholder="Allergies, pickup info, etc."></textarea>
+					<br/><br/>
+					<button onclick="downloadPermissionSlip()">Download slip (PDF-free)</button>
+					<p class="small">This creates a simple text file download you can store/print. For official workflows, swap this section with a Google Form.</p>
+				</div>
+				<div class="card">
+					<strong>Optional: link to your official form</strong>
+					<p class="small">Replace the URL below.</p>
+					<p><a href="https://example.com" target="_blank" rel="noreferrer">Open Permission Slip Form</a></p>
+				</div>
+			</div>
+		</section>
+
+		<section id="secret">
+			<h2>Secret Message</h2>
+			<p class="small">Put a password here to reveal a message.</p>
+			<div class="grid">
+				<div class="card">
+					<label>Enter password</label>
+					<input id="secret_pw" placeholder="Password" />
+					<br/><br/>
+					<button onclick="revealSecret()">Reveal</button>
+					<p id="secret_out" style="margin:12px 0 0" class="small"></p>
+				</div>
+				<div class="card">
+					<strong>Edit me</strong>
+					<p class="small">Change <code>SECRET_PASSWORD</code> and <code>SECRET_MESSAGE</code> in the script.</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="playlist">
+			<h2>Playlist</h2>
+			<p class="small">Embed a Spotify/Apple Music/YouTube playlist.</p>
+			<div class="card">
+				<!-- Replace with your embed code (Spotify/YouTube/etc.) -->
+				<iframe height="152" src="https://open.spotify.com/embed/album/2HNjUP7VDUpyxQ2J3Cbch4?utm_source=oembed" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+				<p class="small">Replace the <code>src</code> with your own playlist embed link.</p>
+			</div>
+		</section>
+
+		<section id="guestbook">
+			<h2>Guestbook</h2>
+			<p class="small">Leave a note and it’ll show up instantly on this device/browser (saved with local storage).</p>
+
+			<div class="grid">
+				<div class="card">
+					<label>Your name</label>
+					<input id="gb_name" placeholder="e.g., Avani" maxlength="40" />
+					<br/><br/>
+
+					<label>Message</label>
+					<textarea id="gb_message" rows="4" placeholder="Write something nice…" maxlength="280"></textarea>
+					<br/><br/>
+
+					<button onclick="guestbookAddEntry()">Sign guestbook</button>
+					<p class="small" style="margin:10px 0 0">Tip: This is a simple no-backend guestbook. For a guestbook shared across all visitors, you’ll need a tiny backend (I can adapt it for that if you tell me where you’re hosting).</p>
+				</div>
+
+				<div class="card">
+					<div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+						<strong>Messages</strong>
+						<button onclick="guestbookClear()" style="width:auto;padding:8px 10px;background:rgba(255,255,255,.10)">Clear</button>
+					</div>
+					<div id="gb_entries" class="small" style="margin-top:10px;display:grid;gap:10px"></div>
+				</div>
+			</div>
+		</section>
+
+		<section id="guest-of-the-day">
+			<h2>Guest of the Day</h2>
+			<p class="small">Today’s VIP guest is: <strong>_____</strong></p>
+			<div class="card">
+				<strong>Earn this by:</strong>
+				<ul class="small" style="margin:10px 0 0; padding-left:18px">
+					<li>Being nice</li>
+					<li>Respecting the vibe</li>
+					<li>Not being chaotic (unless allowed)</li>
+				</ul>
+				<p class="small" style="margin:10px 0 0">Update this whenever someone visits.</p>
+			</div>
+		</section>
+
+		<section id="room-status">
+			<h2>Room Status</h2>
+			<p class="small">Pick whichever one is true today:</p>
+			<div class="grid">
+				<div class="card"><strong>🟢 Open</strong><p class="small" style="margin:8px 0 0">Come in (knock first).</p></div>
+				<div class="card"><strong>🟡 Caution</strong><p class="small" style="margin:8px 0 0">Chill only. Low volume.</p></div>
+				<div class="card"><strong>🔴 Closed</strong><p class="small" style="margin:8px 0 0">Not right now. Try later.</p></div>
+			</div>
+		</section>
+
+		<section id="todays-vibe">
+			<h2>Today’s Vibe</h2>
+			<p class="small">Bold the one you choose each day.</p>
+			<div class="card">
+				<p class="small" style="margin:0">
+					<strong>Chill</strong> · Hyper · Sleepy · Creative · Gossip mode · Silent hangout · LED blue aesthetic
+				</p>
+			</div>
+		</section>
+
+		<section id="sticker-wall">
+			<h2>Sticker Wall</h2>
+			<p class="small">Pick one sticker to leave on the wall:</p>
+			<div class="card">
+				<p style="font-size:1.3rem;margin:0">💙 ⭐ 🌙 ✨ 🫶 🎧 🐬 ❄️</p>
+				<p class="small" style="margin:10px 0 0">Guests can choose one emoji and you can add it here when they visit.</p>
+			</div>
+		</section>
+
+		<section id="blue-pass">
+			<h2>Blue Pass Holders</h2>
+			<p class="small">People who currently have a Rule‑Breaker Token:</p>
+			<div class="card">
+				<ol class="small" style="margin:0; padding-left:18px">
+					<li>&nbsp;</li>
+					<li>&nbsp;</li>
+					<li>&nbsp;</li>
+				</ol>
+				<p class="small" style="margin:10px 0 0">Update this whenever someone earns one.</p>
+			</div>
+		</section>
+
+		<section id="room-map">
+			<h2>Room Map</h2>
+			<div class="card">
+				<ul class="small" style="margin:0; padding-left:18px">
+					<li><strong>Bed Zone</strong> — no outdoor clothes</li>
+					<li><strong>Desk Zone</strong> — do not touch unless you want to summon chaos</li>
+					<li><strong>Snack Drawer</strong> — VIP access only</li>
+					<li><strong>Swivel Chair</strong> — 5‑minute limit</li>
+					<li><strong>Mirror Area</strong> — selfie approved</li>
+					<li><strong>Floor</strong> — currently unknown terrain</li>
+				</ul>
+			</div>
+		</section>
+
+		<section id="rules">
+			<h2>Rules Explained</h2>
+			<p class="small">Official portal rules (very serious).</p>
+			<div class="card">
+				<ul class="small" style="margin:0; padding-left:18px">
+					<li><strong>No saying “shut up”</strong> — we’re classy here</li>
+					<li><strong>No roasts</strong> — unless I start it</li>
+					<li><strong>Ask before touching things</strong> — my room is my safe zone</li>
+					<li><strong>Respect the vibe</strong> — lighting and music matter</li>
+					<li><strong>If I say “get out,” it means get out</strong> — no debate</li>
+				</ul>
+			</div>
+		</section>
+
+		<section id="vip">
+			<h2>VIP Code Generator</h2>
+			<p class="small">Generate a short code you can share with VIP guests.</p>
+			<div class="grid">
+				<div class="card">
+					<label>Your name</label>
+					<input id="vip_name" placeholder="e.g., Mia" maxlength="40" />
+					<br/><br/>
+					<button onclick="generateVIPCode()">Generate VIP code</button>
+					<pre id="vip_out" style="white-space:pre-wrap;margin:12px 0 0" class="small"></pre>
+				</div>
+				<div class="card">
+					<strong>Format</strong>
+					<p class="small" style="margin:10px 0 0">Your VIP code = <strong>first letter of your name + today’s date + a random blue emoji</strong></p>
+					<p class="small" style="margin:10px 0 0">Example: Mia on April 26 → <code>M26💙</code></p>
+					<p class="small" style="margin:10px 0 0">Show me your code to unlock:</p>
+					<ul class="small" style="margin:8px 0 0; padding-left:18px">
+						<li>1 permission slip</li>
+						<li>1 snack</li>
+						<li>1 rule skip (if approved)</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<p class="small">© <span id="year"></span> My Simple Site</p>
+	</footer>
+
+	<script>
+		// ===== Secret Message config =====
+		const SECRET_PASSWORD = "BlueNovaEntry";
+		const SECRET_MESSAGE = "You are entering the realm of the blue stars";
+
+		document.getElementById("year").textContent = new Date().getFullYear();
+
+		function downloadPermissionSlip(){
+			const name = document.getElementById("ps_name").value.trim();
+			const email = document.getElementById("ps_email").value.trim();
+			const notes = document.getElementById("ps_notes").value.trim();
+			const text = [
+				"DIGITAL PERMISSION SLIP",
+				"----------------------",
+				`Participant: ${name || "(blank)"}`,
+				`Guardian email: ${email || "(blank)"}`,
+				"",
+				"Notes:",
+				notes || "(none)",
+				"",
+				`Timestamp: ${new Date().toISOString()}`,
+			].join("\n");
+
+			const blob = new Blob([text], { type: "text/plain" });
+			const a = document.createElement("a");
+			a.href = URL.createObjectURL(blob);
+			a.download = `permission-slip-${(name||"participant").replace(/\s+/g,"-").toLowerCase()}.txt`;
+			a.click();
+			URL.revokeObjectURL(a.href);
+		}
+
+		function revealSecret(){
+			const pw = document.getElementById("secret_pw").value;
+			const out = document.getElementById("secret_out");
+			if(pw === SECRET_PASSWORD){
+				out.textContent = SECRET_MESSAGE;
+			}else{
+				out.textContent = "Nope — try again.";
+			}
+		}
+
+		function generateVIPCode(){
+			const name = String(document.getElementById("vip_name")?.value || "").trim();
+			const letter = (name[0] || "V").toUpperCase();
+			const d = new Date();
+			const day = String(d.getDate());
+			const emojis = ["💙","🩵","🌊","🐬","❄️","✨"];
+			const emoji = emojis[Math.floor(Math.random()*emojis.length)];
+			document.getElementById("vip_out").textContent = `${letter}${day}${emoji}`;
+		}
+
+		// ===== Guestbook (no-backend, local to this browser) =====
+		const GUESTBOOK_KEY = "guestbook_entries_v1";
+
+		function guestbookLoad(){
+			try{
+				return JSON.parse(localStorage.getItem(GUESTBOOK_KEY) || "[]");
+			}catch(e){
+				return [];
+			}
+		}
+
+		function guestbookSave(entries){
+			localStorage.setItem(GUESTBOOK_KEY, JSON.stringify(entries));
+		}
+
+		function guestbookRender(){
+			const wrap = document.getElementById("gb_entries");
+			if(!wrap) return;
+
+			const entries = guestbookLoad();
+			if(entries.length === 0){
+				wrap.innerHTML = "<div class='small'>No messages yet — be the first.</div>";
+				return;
+			}
+
+			wrap.innerHTML = entries
+				.slice()
+				.reverse()
+				.map(e => `<br>					<div style="padding:10px 12px;border:1px solid rgba(255,255,255,.10);border-radius:12px;background:rgba(0,0,0,.18)"><br>						<div style="display:flex;justify-content:space-between;gap:10px;align-items:baseline"><br>							<strong>${escapeHtml(e.name || "Anonymous")}</strong><br>							<span class="small">${new Date(e.time).toLocaleString()}</span><br>						</div><br>						<div style="margin-top:6px">${escapeHtml(e.message || "")}</div><br>					</div><br>				`).join("");
+		}
+
+		function guestbookAddEntry(){
+			const nameEl = document.getElementById("gb_name");
+			const msgEl = document.getElementById("gb_message");
+			const name = (nameEl?.value || "").trim();
+			const message = (msgEl?.value || "").trim();
+
+			if(!message){
+				alert("Please write a message.");
+				return;
+			}
+
+			const entries = guestbookLoad();
+			entries.push({ name: name || "Anonymous", message, time: new Date().toISOString() });
+			guestbookSave(entries);
+
+			if(nameEl) nameEl.value = "";
+			if(msgEl) msgEl.value = "";
+			guestbookRender();
+		}
+
+		function guestbookClear(){
+			if(confirm("Clear guestbook messages on this device?")){
+				localStorage.removeItem(GUESTBOOK_KEY);
+				guestbookRender();
+			}
+		}
+
+		function escapeHtml(str){
+			return String(str)
+				.replaceAll("&","&amp;")
+				.replaceAll("<","&lt;")
+				.replaceAll(">","&gt;")
+				.replaceAll("\"","&quot;")
+				.replaceAll("'","&#039;");
+		}
+
+		// Render guestbook on load
+		guestbookRender();
+	</script>
+</body>
+</html>
